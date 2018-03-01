@@ -1,8 +1,32 @@
 // Pick a random word
+    // Create an array of words
+    var words = [
+        "pirate",
+        "dubloons",
+        "booty",
+        "treasure chest",
+        "Jolly Roger",
+        "captain",
+        "parrot",
+        "cannonball",
+        "eyepatch",
+        "Blackbeard",
+        "sword",
+        "buccaneer",
+        "anchor",
+        "island",
+        "scurvy"
+    ];
 
+    var randomWord = words[Math.floor(Math.random() * words.length)]
 
 // Display "blanks" for each letter of the chosen word
 
+    var wordBlanks = [];
+
+    for (i = 0, i < randomWord.length, i++) {
+        wordBlanks[i] = "_";
+    }
 
 
 // Display buttons featuring letters of the alphabet 
