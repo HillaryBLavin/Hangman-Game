@@ -83,7 +83,7 @@ window.onload=function(){
             checkLetter(event.key)
         }
     }
-    // check if letter is in word
+    // Check if the letter the user guesses is CORRECT
     function checkLetter(letter) {
         console.log(letter);
         
@@ -108,8 +108,19 @@ window.onload=function(){
             }
         }
     }
-
-    // Determine if guess is incorrect
+    // Check if the letter the user guesses is INCORRECT
+    function checkIncorrect(letter) {
+        if (
+          wordBlanks.indexOf(letter.toLowerCase()) === -1
+          &&
+          wordBlanks.indexOf(letter.toUpperCase()) === -1
+        ) {
+          guessesLeft--;
+          incorrectLetters.push(letter);
+          $wrongLetters.textContent = incorrectLetters
+          $guessesLeft.textContent = guessesLeft;
+        }
+    }
 
     // push results
     // Show that the guess is either correct or not correct
