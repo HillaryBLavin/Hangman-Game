@@ -99,6 +99,7 @@ window.onload=function(){
                 }
             }
             $wordBlanks.textContent = wordBlanks.join(" ")
+            checkIncorrect(letter);
         } 
         else {
             if (!isgameRunning) {
@@ -111,13 +112,15 @@ window.onload=function(){
     // Check if the letter the user guesses is INCORRECT
     function checkIncorrect(letter) {
         if (
-          wordBlanks.indexOf(letter.toLowerCase()) === -1
-          &&
-          wordBlanks.indexOf(letter.toUpperCase()) === -1
+          // Check both lowercase and uppercase
+          wordBlanks.indexOf(letter.toLowerCase()) === -1 && wordBlanks.indexOf(letter.toUpperCase()) === -1
         ) {
+          // Decrement guesses left  
           guessesLeft--;
+          // Push incorrect letters to incorrectLetters and wrong-letters <div>
           incorrectLetters.push(letter);
           $wrongLetters.textContent = incorrectLetters
+          // Display how many guesses are left
           $guessesLeft.textContent = guessesLeft;
         }
     }
