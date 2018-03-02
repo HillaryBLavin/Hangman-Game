@@ -44,7 +44,7 @@ window.onload=function(){
     // Is the game running?
     var isgameRunning = false;
 
-    // Create Functions
+// Create Functions
     // Start/Reset game
     function newGame() {
         // Reset all game info
@@ -70,8 +70,8 @@ window.onload=function(){
         $wrongLetters.textContent = incorrectLetters;
         } 
     }
-        // Add event listener for Start Game Button
-        $newGameButton.addEventListener('click', newGame);
+    // Add event listener for Start Game Button
+    $newGameButton.addEventListener('click', newGame);
 
 
     // Register the keys pressed (letters guessed) by the user
@@ -92,9 +92,9 @@ window.onload=function(){
             guessedLetterBank.push(letter);
             // Check if guessed letter is in my picked word
             for (var i = 0; i < randomWord.length; i++) {
-                // Convert both values to lower case for comparison purposes
+                // Convert both values to lower case for comparison purposes...
                 if (randomWord[i].toLowerCase() === letter.toLowerCase()) {
-                    // If they match, swap out the blank for the actual letter
+                    // ...and if they match, replace the "blank" for the actual letter
                     wordBlanks[i] = randomWord[i];
                 }
             }
@@ -108,9 +108,11 @@ window.onload=function(){
             }
         }
     }
+
+    // Determine if guess is incorrect
+
     // push results
     // Show that the guess is either correct or not correct
-        // If correct, make that letter appear in the appropriate blank(s) in the chosen word
         // If incorrect, decrement the "guesses" counter
 
 
