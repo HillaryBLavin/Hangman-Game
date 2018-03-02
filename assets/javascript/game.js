@@ -1,9 +1,9 @@
 window.onload=function(){ 
     // Grab DOM elements
-    var $startGameButton = document.getElementById("start-game-button");
+    var $newGameButton = document.getElementById("new-game-button");
     var $wordBlanks = document.getElementById("word-blanks");
-    var $guessedLetters = document.getElementById("guessed-letters");
-    var $remainingGuesses = document.getElementById("remaining-guesses");
+    var $wrongLetters = document.getElementById("wrong-letters");
+    var $guessesLeft = document.getElementById("guesses-left");
     var $wins = document.getElementById("wins");
     var $losses = document.getElementById("losses");
 
@@ -32,12 +32,12 @@ window.onload=function(){
     var randomWord = "";
     // Number of letters in the randomly chosen word (wordBlanks)
     var wordBlanks = [];
-    // Correct letters guess (filled in wordBlanks??)
-    var correctLetters = [];
+    // Letters guessed by user
+    var guessedLetterBank = [];
     // Incorrect letters guessed
     var incorrectLetters = [];
     // Number of guesses remaining 
-    var remainingGuesses = 10;
+    var guessesLeft = 10;
     // Wins and Losses
     var wins = 0;
     var losses = 0;
@@ -49,13 +49,13 @@ window.onload=function(){
     function newGame() {
         // Reset all game info
         isgameRunning = true;
-        remainingGuesses = 10;
-        correctLetters = [];
+        guessesLeft = 10;
+        guessedLetterBank = [];
         incorrectLetters = [];
         wordBlanks = [];
 
         // Randomly choose word
-        var randomWord = words[Math.floor(Math.random() * words.length)];
+        randomWord = words[Math.floor(Math.random() * words.length)];
 
         // Display "blanks" for each letter of the randomly chosen word
         for (i = 0; i < randomWord.length; i++) {
@@ -65,19 +65,50 @@ window.onload=function(){
                 wordBlanks.push("_");
             }
         // Write all new game info to DOM
-        $remainingGuesses.textContent = remainingGuesses;
+        $guessesLeft.textContent = guessesLeft;
         $wordBlanks.textContent = wordBlanks.join(" ");
-        $guessedLetters.textContent = incorrectLetters;
+        $wrongLetters.textContent = incorrectLetters;
         } 
     }
         // Add event listener for Start Game Button
-        $startGameButton.addEventListener('click', newGame);
+        $newGameButton.addEventListener('click', newGame);
 
 
     // Register the keys pressed (letters guessed) by the user
-        // onkeyup event
-        // check if letter is in word
-        // push results
+    // onkeyup event
+    document.onkeyup = function(event) {
+        // Force user to use ONLY letters a-z
+        console.dir(event);
+        if (event.keyCode >= 65 && event.keyCode <= 90) {
+            checkLetter(event.key)
+        }
+    }
+    // check if letter is in word
+    function checkLetter(letter) {
+        console.log(letter);
+        
+        if (isgameRunning === true && guessedLetterBank.indexOf(letter) === -1) {
+            // Run Game logic
+            guessedLetterBank.push(letter);
+            // Check if guessed letter is in my picked word
+            for (var i = 0; i < randomWord.length; i++) {
+                // Convert both values to lower case for comparison purposes
+                if (randomWord[i].toLowerCase() === letter.toLowerCase()) {
+                    // If they match, swap out the blank for the actual letter
+                    wordBlanks[i] = randomWord[i];
+                }
+            }
+            $wordBlanks.textContent = wordBlanks.join(" ")
+        } 
+        else {
+            if (!isgameRunning) {
+                alert("Ye best be hittin' the Weigh Anchor button to start yer game, Matey!");
+            } else {
+                alert("Ye've already guessed that, try again!");
+            }
+        }
+    }
+    // push results
     // Show that the guess is either correct or not correct
         // If correct, make that letter appear in the appropriate blank(s) in the chosen word
         // If incorrect, decrement the "guesses" counter
