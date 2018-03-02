@@ -1,5 +1,5 @@
-// Pick a random word
-    // Create an array of words
+// Create variables
+    // Words to choose from
     var words = [
         "pirate",
         "dubloons",
@@ -17,39 +17,44 @@
         "island",
         "scurvy"
     ];
+    // Randomly chosen word
+    // Number of letters in the chosen word (wordBlanks)
+    // Correct letters guess (filled in wordBlanks??)
+    // Incorrect letters guessed
+    // Number of guesses remaining 
+    // Wins and Losses
+    // Is the game running?
 
-    var randomWord = words[Math.floor(Math.random() * words.length)];
+// Create Functions
+    // Start/Reset game
+    // Randomly choose word
+        var randomWord = words[Math.floor(Math.random() * words.length)];
+    // Display "blanks" for each letter of the chosen word
+        var wordBlanks = [];
 
-// // Display "blanks" for each letter of the chosen word
+        for (i = 0; i < randomWord.length; i++) {
+            wordBlanks[i] = "_";
+        };
 
-    var wordBlanks = [];
-
-    for (i = 0; i < randomWord.length; i++) {
-        wordBlanks[i] = "_";
-    };
-
-    // Check Your Work
-        var checkWork = document.getElementById("game-word");
-        checkWork.innerHTML = wordBlanks;
-        checkWork.innerHTML = wordBlanks.join(" ");
-
-// DO YOU WANT TO PLAY A GAME?
-
-// Register the keys pressed (letters guessed) by the user
-
-
-// Show that the guess is either correct or not correct
-
-
-// If guess is correct, make that letter appear in the appropriate blank(s) in the chosen word
-
-
-// If guess is incorrect, decrement the "guesses" counter
+    // Register the keys pressed (letters guessed) by the user
+        // onkeyup event
+        // check if letter is in word
+        // push results
+    // Show that the guess is either correct or not correct
+        // If correct, make that letter appear in the appropriate blank(s) in the chosen word
+        // If incorrect, decrement the "guesses" counter
 
 
-// If "guesses" counter reaches 0, game over
+    // If "guesses" counter reaches 0, game over
 
 
-// If user guesses word correctly, they win!
+    // If user guesses word correctly, they win!
 
-// Record wins and losses in appropriate counters.
+    // Record wins and losses in appropriate counters.
+
+
+// Check Your Work
+var checkWork = document.getElementById("game-word");
+checkWork.innerHTML = wordBlanks;
+checkWork.innerHTML = wordBlanks.join(" ");
+// Use this in your HTML to check your work <div id="game-word"></div>
