@@ -20,30 +20,25 @@
 
     var randomWord = words[Math.floor(Math.random() * words.length)];
 
+// // Display "blanks" for each letter of the chosen word
 
+    var wordBlanks = [];
 
-// Display "blanks" for each letter of the chosen word
+    for (i = 0; i < randomWord.length; i++) {
+        wordBlanks[i] = "_";
+    };
 
-    // var wordBlanks = [];
-
-    // for (i = 0, i < randomWord.length, i++) {
-    //     wordBlanks[i] = "_";
-    // }
-
-
+    // Check Your Work
+        var checkWork = document.getElementById("game-word");
+        checkWork.innerHTML = wordBlanks;
+        checkWork.innerHTML = wordBlanks.join(" ");
 
 // DO YOU WANT TO PLAY A GAME?
-
-
-
-
 
 // Register the keys pressed (letters guessed) by the user
 
 
-
 // Show that the guess is either correct or not correct
-
 
 
 // If guess is correct, make that letter appear in the appropriate blank(s) in the chosen word
@@ -56,3 +51,5 @@
 
 
 // If user guesses word correctly, they win!
+
+// Record wins and losses in appropriate counters.
