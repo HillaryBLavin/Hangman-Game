@@ -29,7 +29,7 @@ window.onload=function(){
         "rum"
     ];
     // Randomly chosen word
-    var randomWord = "";
+    var randomWord = '';
     // Number of letters in the randomly chosen word (wordBlanks)
     var wordBlanks = [];
     // Letters guessed by user

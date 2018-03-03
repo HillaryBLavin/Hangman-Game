@@ -1,7 +1,19 @@
-/* body {
+@font-face {
+    font-family: 'beryliumregular';
+    src: url('beryliumfont/berylium-webfont.woff2') format('woff2'),
+         url('beryliumfont/berylium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
     background-image: url('oceanbkg.jpg');
     height: 100%; 
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-} */
+    font-family: 'beryliumregular';
+    font-weight: normal;
+    font-style: normal;
+}
+
