@@ -127,9 +127,9 @@ window.onload=function(){
           $guessesLeft.textContent = guessesLeft;
         }
         checkLose();
-
+        checkWin();
     }
-
+    
 
 
     // checkLose - If "guesses" counter reaches 0, they lose!
@@ -139,8 +139,9 @@ window.onload=function(){
             isgameRunning = false;
             $losses.textContent = losses;
         }
-        checkWin();
+        
     }
+    
 
     // checkWin - If user guesses word correctly, they win!
     function checkWin() {
