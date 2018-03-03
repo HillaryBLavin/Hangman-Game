@@ -86,7 +86,7 @@ window.onload=function(){
     // Check if the letter the user guesses is CORRECT
     function checkLetter(letter) {
         console.log(letter);
-        
+        // As long as the user has hit the start button and there have been no guesses so far...
         if (isgameRunning === true && guessedLetterBank.indexOf(letter) === -1) {
             // Run Game logic
             guessedLetterBank.push(letter);
@@ -94,22 +94,25 @@ window.onload=function(){
             for (var i = 0; i < randomWord.length; i++) {
                 // Convert both values to lower case for comparison purposes...
                 if (randomWord[i].toLowerCase() === letter.toLowerCase()) {
-                    // ...and if they match, replace the "blank" for the actual letter
+                    // ...and if they match, replace the "blank" with the actual letter
                     wordBlanks[i] = randomWord[i];
                 }
             }
-            $wordBlanks.textContent = wordBlanks.join(" ")
+            $wordBlanks.textContent = wordBlanks.join(" ");
+            // Call upon the checkIncorrect function to check if the guess was INCORRECT
             checkIncorrect(letter);
         } 
         else {
+            // Alert player to hit the start button if they start typing first
             if (!isgameRunning) {
-                alert("Ye best be hittin' the Weigh Anchor button to start yer game, Matey!");
+                alert("Ye best Weigh Anchor button to start yer game, Matey!");
+            // Alert player if they have already guessed that letter    
             } else {
                 alert("Ye've already guessed that, try again!");
             }
         }
     }
-    // Check if the letter the user guesses is INCORRECT
+    // This function will check if the letter the user guesses is INCORRECT
     function checkIncorrect(letter) {
         if (
           // Check both lowercase and uppercase
@@ -117,17 +120,14 @@ window.onload=function(){
         ) {
           // Decrement guesses left  
           guessesLeft--;
-          // Push incorrect letters to incorrectLetters and wrong-letters <div>
+          // Push incorrect letters to incorrectLetters and write to DOM
           incorrectLetters.push(letter);
           $wrongLetters.textContent = incorrectLetters
-          // Display how many guesses are left
+          // Display how many guesses are left (write to DOM)
           $guessesLeft.textContent = guessesLeft;
         }
     }
 
-    // push results
-    // Show that the guess is either correct or not correct
-        // If incorrect, decrement the "guesses" counter
 
 
     // checkLose - If "guesses" counter reaches 0, they lose!
