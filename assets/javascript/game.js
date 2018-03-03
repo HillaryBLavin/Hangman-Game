@@ -126,14 +126,30 @@ window.onload=function(){
           // Display how many guesses are left (write to DOM)
           $guessesLeft.textContent = guessesLeft;
         }
+        checkLose();
+
     }
 
 
 
     // checkLose - If "guesses" counter reaches 0, they lose!
+    function checkLose() {
+        if (guessesLeft === 0) {
+            losses++;
+            isgameRunning = false;
+            $losses.textContent = losses;
+        }
+        checkWin();
+    }
 
     // checkWin - If user guesses word correctly, they win!
-
+    function checkWin() {
+        if (randomWord.toLowerCase() === wordBlanks.join(" ").toLowerCase()) {
+            wins++;
+            isgameRunning = false;
+            $wins.textContent = wins;
+        }
+    }
     // Record wins and losses in appropriate counters.
 
 
