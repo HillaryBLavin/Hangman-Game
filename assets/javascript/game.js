@@ -127,7 +127,7 @@ window.onload=function(){
           $guessesLeft.textContent = guessesLeft;
         }
         checkLose();
-        checkWin();
+
     }
     
 
@@ -139,7 +139,7 @@ window.onload=function(){
             isgameRunning = false;
             $losses.textContent = losses;
         }
-        
+        checkWin();
     }
     
 
