@@ -98,7 +98,7 @@ window.onload=function(){
                     wordBlanks[i] = randomWord[i];
                 }
             }
-            $wordBlanks.textContent = wordBlanks.join(' ');
+            $wordBlanks.textContent = wordBlanks.join('');
             // Call upon the checkIncorrect function to check if the guess was INCORRECT
             checkIncorrect(letter);
         } 
@@ -145,7 +145,7 @@ window.onload=function(){
 
     // checkWin - If user guesses word correctly, they win!
     function checkWin() {
-        if (randomWord.toLowerCase() === wordBlanks.join(' ').toLowerCase()) {
+        if (randomWord.toLowerCase() === wordBlanks.join('').toLowerCase()) {
             wins++;
             isgameRunning = false;
             $wins.textContent = wins;
